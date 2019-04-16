@@ -13,8 +13,8 @@ end
 
 response = get_url_response('https://stackoverflow.com/')
 response.code
-p response.body.size
-p response['Content-type']
+response.body.size
+response['Content-type']
 
 byebug
 

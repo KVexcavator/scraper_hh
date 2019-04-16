@@ -1,7 +1,19 @@
 require 'open-uri'
+require 'byebug'
+require 'nokogiri'
 
-puts open('https://stackoverflow.com/').read(200)
+url=('https://stackoverflow.com/')
 
-byebug
+page = Nokogiri::HTML(open(url))
+header = page.css("div.-main")
+title = header.text.strip
 
-grab
+puts open(url).read(200)
+puts " * "*20
+puts "This is the raw header of the latest episode: #{header}" 
+puts " * "*20
+puts "This is the title of the latest episode: #{title}"
+
+#byebug
+
+#grab
