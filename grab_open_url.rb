@@ -5,14 +5,24 @@ require 'nokogiri'
 url=('https://stackoverflow.com/')
 
 page = Nokogiri::HTML(open(url))
-header = page.css("div.-main")
-title = header.text.strip
+question = page.css("div.question-summary narrow","a.question-hyperlink")
 
 puts open(url).read(200)
 puts " * "*20
-puts "This is the raw header of the latest episode: #{header}" 
+puts "Total quetions on this page: # #{question.count}"
 puts " * "*20
-puts "This is the title of the latest episode: #{title}"
+i=1
+question.each do |q|
+  puts "#{i}--Quetion:  #{q}"
+  i+=1  
+end
+
+puts " * "*20
+i=1
+question.each do |q|
+  puts "#{i}--Title : #{q.text.strip}"
+  i+=1
+end
 
 #byebug
 
