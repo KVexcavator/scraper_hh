@@ -11,17 +11,15 @@ puts open(url).read(200)
 puts " * "*20
 puts "Total quetions on this page: # #{question.count}"
 puts " * "*20
-i=1
-question.each do |q|
-  puts "#{i}--Quetion:  #{q}"
-  i+=1  
+
+question.each_with_index do |q,i|
+  puts "#{i+1}--Quetion:  #{q}"
 end
 
 puts " * "*20
-i=1
-question.each do |q|
-  puts "#{i}--Title : #{q.text.strip}"
-  i+=1
+
+question.each_with_index do |q,i|
+  puts "#{i+1}--Title : #{q.text.strip}"
 end
 
 #byebug
